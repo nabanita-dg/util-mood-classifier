@@ -24,7 +24,11 @@ jobs:
         rsync -av --exclude='space-repo' ./ space-repo/
         cd space-repo
 
-        # Pull first to avoid conflicts
+        # Fetch remote first and reset local copy
+        git fetch
+        git reset --hard origin/main
+
+        # Now pull cleanly
         git pull origin main --allow-unrelated-histories --rebase=false
 
         git add .
