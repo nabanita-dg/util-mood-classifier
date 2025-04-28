@@ -1,4 +1,3 @@
-# Mood Classifier App
 ---
 title: Util Mood Classifier
 emoji: 🐠
@@ -10,6 +9,7 @@ app_file: app.py
 pinned: false
 ---
 
+# Mood Classifier App
 A simple Streamlit app that converts your mood into an emoji!
 
 ## How to Use
