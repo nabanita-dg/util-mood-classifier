@@ -22,7 +22,7 @@ jobs:
         cd space-repo
 
         # Pull first to avoid conflicts
-        git pull origin main --allow-unrelated-histories
+        git pull origin main --allow-unrelated-histories --rebase=false
 
         git add .
         git commit -m "Auto-deploy from GitHub Actions 🚀" || echo "Nothing to commit"
