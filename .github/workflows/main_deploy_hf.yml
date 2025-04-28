@@ -1,21 +1,31 @@
-name: Sync to Hugging Face hub
+name: Deploy to Hugging Face Spaces
+
 on:
   push:
-    branches: [main]
-
-  # to run this workflow manually from the Actions tab
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  sync-to-hub:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          lfs: true
-      - name: Push to hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: 
-          git push --force https://nabanita-dg:$HF_TOKEN@huggingface.co/spaces/nabanita-dg/util-mood-classifier main
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Push to Hugging Face Space
+      run: |
+        # Clone the Space repo
+        git clone ttps://nabanita-dg:$HF_TOKEN@huggingface.co/spaces/nabanita-dg/util-mood-classifier space-repo
+        cp -r * space-repo/
+        cd space-repo
+
+        # Pull first to avoid conflicts
+        git pull origin main --allow-unrelated-histories
+
+        git add .
+        git commit -m "Auto-deploy from GitHub Actions 🚀" || echo "Nothing to commit"
+        git push
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
