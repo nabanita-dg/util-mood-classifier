@@ -1,5 +1,14 @@
-# util-mood-classifier
 # Mood Classifier App
+---
+title: Util Mood Classifier
+emoji: 🐠
+colorFrom: yellow
+colorTo: pink
+sdk: streamlit
+sdk_version: 1.44.1
+app_file: app.py
+pinned: false
+---
 
 A simple Streamlit app that converts your mood into an emoji!
 

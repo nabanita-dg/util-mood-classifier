@@ -1,4 +1,0 @@
-sdk: streamlit
-repo: https://github.com/nabanita-dg/util-mood-classifier
-branch: main
-python_version: 3.10
