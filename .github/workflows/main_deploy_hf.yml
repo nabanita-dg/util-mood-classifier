@@ -18,7 +18,7 @@ jobs:
       run: |
         # Clone the Space repo
         git clone https://nabanita-dg:$HF_TOKEN@huggingface.co/spaces/nabanita-dg/util-mood-classifier space-repo
-        cp -r * space-repo/
+        rsync -av --exclude='space-repo' ./ space-repo/
         cd space-repo
 
         # Pull first to avoid conflicts
